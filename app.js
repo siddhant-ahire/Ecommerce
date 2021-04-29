@@ -5,6 +5,7 @@ const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
 require('dotenv').config();
 const mongoose = require('mongoose');
+const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/user')
 
 //db
@@ -25,6 +26,7 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 
 //Routes middleware
+app.use("/api",authRoutes);
 app.use("/api",userRoutes);
 
 const port = process.env.PORT || 8000;
