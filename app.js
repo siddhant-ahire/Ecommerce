@@ -7,6 +7,7 @@ require('dotenv').config();
 const mongoose = require('mongoose');
 const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/user')
+const categoryRoutes = require('./routes/category')
 
 //db
 mongoose.connect(process.env.DATABASE,{
@@ -28,6 +29,8 @@ app.use(cookieParser());
 //Routes middleware
 app.use("/api",authRoutes);
 app.use("/api",userRoutes);
+app.use("/api",categoryRoutes);
+
 
 const port = process.env.PORT || 8000;
 
