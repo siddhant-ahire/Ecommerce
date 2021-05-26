@@ -20,7 +20,7 @@ exports.create = (req,res,next) =>{
     category.save((err,data)=>{
         if(err){
             return res.status(400).json({
-                error:errorHandler(err)
+                error:errorHandler(err) || 'Error'
             })
         }
         res.json({data})
