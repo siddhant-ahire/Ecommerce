@@ -7,7 +7,9 @@ const { errorHandler } = require('../helpers/dbErrorHandler');
 
 
 exports.productById = (req,res,next,id) =>{
-    Product.findById(id).exec((err,result)=>{
+    Product.findById(id)
+    .populate('category')
+    .exec((err,result)=>{
         if(err || !result){
             return res.status(400).json({
                 error:errorHandler(err)
